@@ -1,0 +1,56 @@
+# ========================
+# Visual Studio / C# .NET
+# ========================
+
+# Build 결과물
+bin/
+obj/
+
+# Visual Studio 캐시 / 사용자 설정
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Rider / ReSharper
+.idea/
+*.sln.iml
+_ReSharper*/
+*.[Rr]e[Ss]harper
+
+# 디버그 파일
+*.pdb
+
+# 로그 파일
+*.log
+
+# 테스트 결과
+TestResults/
+
+# 패키지 캐시
+packages/
+
+# Publish 결과
+publish/
+
+# OS / 시스템 파일
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# 백업 파일
+*.bak
+*.tmp
+*.temp
+
+# VS Code
+.vscode/
+
+# NuGet
+*.nupkg
+*.snupkg
+
+# 사용자별 설정 파일
+appsettings.Development.json
+appsettings.Local.json
