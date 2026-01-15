@@ -72,4 +72,14 @@ public class Player : Character
             _ => 15
         };
     #endregion
+
+    #region 매서드
+    public override void DisplayInfo()
+    {
+        base.DisplayInfo();
+        Console.WriteLine($"직업 : {Job}");
+        Console.WriteLine($"골드 : {Gold}");
+        Console.WriteLine($"=====================");
+    }
+    #endregion
 }

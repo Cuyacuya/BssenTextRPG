@@ -61,7 +61,7 @@ public class GameManager
     private void CreateCharacter()
     {
         //이름 입력
-        Console.WriteLine("플레이어의 이름을 입력하세요 : ");
+        Console.Write("플레이어의 이름을 입력하세요 : ");
         string? name = Console.ReadLine(); //nullalbe 허용 (?)
 
         if (string.IsNullOrWhiteSpace(name))
@@ -103,13 +103,9 @@ public class GameManager
         //입력한 이름과 선택한 직업으로 플레어 캐릭터 생성
         Player = new Player(name, job);
         Console.WriteLine($"\n{name}님, {job}직업으로 캐릭터가 생성되었습니다.");
-
+        Player.DisplayInfo();
         //테스트 코드
-        Console.WriteLine($"Player HP : {Player.CurHp}");
-        Console.WriteLine($"Player HP : {Player.CurMp}");
-        Console.WriteLine($"Player HP : {Player.AttackPower}");
-        Console.WriteLine($"Player HP : {Player.Defense}");
-        Console.WriteLine($"Player HP : {Player.Level}");
+        
     }
     #endregion
 }
