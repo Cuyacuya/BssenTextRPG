@@ -1,7 +1,7 @@
-﻿using TextRPG.Utils;
-using TextRPG.Data;
+﻿using BssenTextRPG.Utils;
+using BssenTextRPG.Data;
 
-namespace BssenTextRPG
+namespace TextRPG
 {
     internal class Program
     {

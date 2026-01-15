@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TextRPG.Utils;
+namespace BssenTextRPG.Utils;
 
 // 콘솔 관련 UI 유틸리티를 담당하는 클래스
 public class ConsoleUI

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TextRPG.Models;
+namespace BssenTextRPG.Models;
 
 public enum JobType
 {
