@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BssenTextRPG.Models;
 
-internal class Enemy : Character
+public class Enemy : Character
 {
     #region 프로퍼티
     public int GoldReward { get; private set; }

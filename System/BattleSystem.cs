@@ -7,7 +7,7 @@ using BssenTextRPG.Models;
 
 namespace BssenTextRPG.System;
 
-internal class BattleSystem
+public class BattleSystem
 {
 #region 던전 입장 - 전투 실행
 //전투 시작
@@ -95,7 +95,18 @@ public bool StartBattle(Player player, Enemy enemy)
                     Console.WriteLine($"{enemy.Name}의 남은 HP : {enemy.CurHp}/{enemy.MaxHp}");
                     return true;
                 case "3": //도망
-                    return false;
+                    //도망 시도 (성공 확률 50%)
+                    Random random = new Random();
+                    if(random.NextDouble() < 0.5)
+                    {
+                        Console.WriteLine("도망에 성공했습니다!");
+                        return false;
+                    }
+                    else
+                    {
+                        Console.WriteLine("도망에 실패했습니다...");
+                        return true;
+                    }
                 default:
                     Console.WriteLine("잘못된 입력입니다. 다시 선택해주세요.");
                     continue;
