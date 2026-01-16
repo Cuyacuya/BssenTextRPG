@@ -56,6 +56,7 @@ public class GameManager
         //캐릭터 생성
         CreateCharacter();
 
+
         //메인 게임 루프
         IsRunning = true;
         while(IsRunning)
@@ -122,14 +123,9 @@ public class GameManager
         Player = new Player(name, job);
         Console.WriteLine($"\n{name}님, {job}직업으로 캐릭터가 생성되었습니다.");
 
-        //테스트 코드
-        //주석처리:
-        //Visual Studio: Ctrl+K+C / 주석해제: Ctrl + K + U
-        //VSCode: Ctrl + /
-        //Console.WriteLine($"Player HP: (Player. CurrentHp}");
-        //Console.WriteLine($"Player MP: {Player. CurrentMp}");
-        //Console.WriteLine($"Player ATK: (Player. AttackPower}");
-        //Console.WriteLine($"Player DEF: (Player. Defense}");
+        //적 캐릭터 생성
+        Enemy enemy = Enemy.CreateEnemy(Player.Level);
+        enemy.DisplayInfo();
 
         //Player.DisplayInfo();
         ConsoleUI.PressAnyKey();

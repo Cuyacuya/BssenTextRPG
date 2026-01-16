@@ -43,7 +43,6 @@ public abstract class Character
     public virtual void DisplayInfo()
     {
         Console.Clear();
-        Console.Clear();
         Console.WriteLine($"====== {Name} 정보 ======");
         Console.WriteLine($"레벨 : {Level}");
         Console.WriteLine($"체력 : {CurHp}/{MaxHp}");
