@@ -37,8 +37,11 @@ public bool StartBattle(Player player, Enemy enemy)
                 Console.WriteLine($"\n전투에서 도망쳤습니다...");
                 return false; //전투 패배
             }
-            //TODO : 적 사망 여부 판단
-            //TODO : 적 턴
+            //적 사망 여부 판단
+            if(!enemy.IsAlive)
+                break;
+            //적 턴
+            EnemyTurn(player, enemy);
             turn++;
     }
 
@@ -70,7 +73,7 @@ public bool StartBattle(Player player, Enemy enemy)
 
         while (true)
         {
-            Console.Write($"행동을 선택해주세요. : ");
+            Console.Write($"(1-3) 선택 : ");
             string? input = Console.ReadLine();
             switch (input)
             {
@@ -94,11 +97,22 @@ public bool StartBattle(Player player, Enemy enemy)
                 case "3": //도망
                     return false;
                 default:
-                    Console.WriteLine("잘못된 입력입니다. 다시 선택해주세요. : ");
+                    Console.WriteLine("잘못된 입력입니다. 다시 선택해주세요.");
                     continue;
             }
         }
             
+    }
+    #endregion
+
+    #region 적 턴
+    private void EnemyTurn(Player player, Enemy enemy)
+    {
+        Console.WriteLine($"{enemy.Name}의 턴!");
+
+        int damage = enemy.Attack(player);
+        Console.WriteLine($"{enemy.Name}의 공격! {player.Name}에게 {damage}의 피해를 입혔습니다.");
+        Console.WriteLine($"{player.Name}의 남은 HP : {player.CurHp}/{player.MaxHp}");
     }
     #endregion
 }
