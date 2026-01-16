@@ -1,5 +1,4 @@
-﻿using BssenTextRPG.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -61,6 +60,18 @@ public bool StartBattle(Player player, Enemy enemy)
                     Console.WriteLine($"{enemy.Name}의 남은 HP : {enemy.CurHp}/{enemy.MaxHp}");
                     break;
                 case "2": //스킬
+                    //스킬 사용 전 MP 체크
+                    if (player.CurMp < 15) 
+                    {
+                        Console.WriteLine($"스킬을 사용할 수 없습니다.");
+                        continue;
+                    }
+
+
+                    //스킬 발동
+                    int skillDamage = player.SkillAttack(enemy);
+                    Console.WriteLine($"{player.Name}의 공격! {enemy.Name}에게 {skillDamage}의 피해를 입혔습니다.");
+                    Console.WriteLine($"{enemy.Name}의 남은 HP : {enemy.CurHp}/{enemy.MaxHp}");
                     break;
                 case "3": //도망
                     break;

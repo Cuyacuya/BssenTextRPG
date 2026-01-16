@@ -82,6 +82,7 @@ public class Player : Character
         Console.WriteLine($"=====================");
     }
 
+    //기본 공격 메서드 (override)
     public override int Attack(Character target)
     {
         //TODO : 장착한 아이템에 따른 공격력 증가 적용
@@ -89,5 +90,21 @@ public class Player : Character
         
         return target.TakeDamage(attackDamage);
     }
+
+    //스킬 공격 (MP 소모) : Player 전용 메서드
+    public int SkillAttack(Character target)
+    {
+        int mpCost = 15;
+
+        //스킬 공격 : 일반 공격의 1.5배 데미지
+        int totalDamage = (int)(AttackPower * 1.5);
+
+        //MP소모
+        CurMp -= mpCost;
+
+        //데미지 전달
+        return target.TakeDamage(totalDamage);
+    }
+
     #endregion
 }
