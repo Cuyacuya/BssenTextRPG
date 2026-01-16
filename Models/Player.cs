@@ -12,7 +12,7 @@ public class Player : Character
     //직업
     public JobType Job {  get; private set; }
     //골드
-    public int Gold { get; }
+    public int Gold { get; private set; }
     //TODO : 장착 무기
     //TODO : 장착 방어구
     #endregion
@@ -105,6 +105,14 @@ public class Player : Character
         //데미지 전달
         return target.TakeDamage(totalDamage);
     }
+
+    //골드 획득 메서드
+    public void GainGold(int amount)
+    {
+        Gold += amount;
+        Console.WriteLine($"골드 +{amount} 획득! 현재 골드 : {Gold}");
+    }
+
 
     #endregion
 }

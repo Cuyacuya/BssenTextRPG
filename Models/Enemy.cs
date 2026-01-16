@@ -38,7 +38,7 @@ internal class Enemy : Character
         int defense =  + (enemyLevel - 1) * 3;
         int goldReward = 20 + (enemyLevel - 1) * 10;
 
-        return new Enemy($"Lv{enemyLevel} {enemyName}", maxHp, maxMp, attackPower, defense, enemyLevel, goldReward);
+        return new Enemy($"Lv{enemyLevel} {enemyName}", maxHp, maxMp, attackPower, defense, goldReward, enemyLevel);
     }
 
     //적 캐릭터 정보 출력
