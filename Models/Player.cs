@@ -81,5 +81,13 @@ public class Player : Character
         Console.WriteLine($"골드 : {Gold}");
         Console.WriteLine($"=====================");
     }
+
+    public override int Attack(Character target)
+    {
+        //TODO : 장착한 아이템에 따른 공격력 증가 적용
+        int attackDamage = AttackPower;
+        
+        return target.TakeDamage(attackDamage);
+    }
     #endregion
 }
