@@ -13,8 +13,10 @@ public class Player : Character
     public JobType Job {  get; private set; }
     //골드
     public int Gold { get; private set; }
-    //TODO : 장착 무기
-    //TODO : 장착 방어구
+    //장착 무기
+    public Equipment? EquippedWeapon { get; private set; }
+    //장착 방어구
+    public Equipment? EquippedArmor { get; private set; }
     #endregion
 
     #region 생성자
@@ -113,6 +115,52 @@ public class Player : Character
         Console.WriteLine($"골드 +{amount} 획득! 현재 골드 : {Gold}");
     }
 
+    //장비 착용
+    public void EquipItem(Equipment newEquipment) 
+    {
+        Equipment? prevEquipment = null;
+
+        switch (newEquipment.Slot)
+        {
+            case EquipmentSlot.Weapon:
+                prevEquipment = EquippedWeapon;
+                EquippedWeapon = newEquipment;
+                break;
+            case EquipmentSlot.Armor:
+                prevEquipment = EquippedArmor;
+                EquippedArmor = newEquipment;
+                break;
+        }
+
+        //이전 장비 해제 메시지
+        if(prevEquipment != null)
+        {
+            Console.WriteLine($"{prevEquipment.Name} 장착 해제");
+        }
+        Console.WriteLine($"{newEquipment.Name} 장착 완료");
+    }
+
+    //장비 착용
+    public Equipment? UnequipItem(EquipmentSlot slot)
+    {
+        Equipment? equipment = null;
+        switch(slot)
+        {
+            case EquipmentSlot.Weapon:
+                equipment = EquippedWeapon;
+                EquippedWeapon = null;
+                break;
+            case EquipmentSlot.Armor:
+                equipment = EquippedArmor;
+                EquippedArmor = null;
+                break;
+        }
+        if(equipment != null)
+        {
+            Console.WriteLine($"{equipment.Name} 장착 해제");
+        }
+        return equipment;
+    }
 
     #endregion
 }

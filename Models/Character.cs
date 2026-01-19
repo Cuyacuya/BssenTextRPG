@@ -70,7 +70,7 @@ public abstract class Character
     {
         int beforeHp = CurHp;
         //회복  후 현재 HP가 최대 HP를 넘지 않도록 설정
-        CurHp = Math.Min(beforeHp, MaxHp);
+        CurHp = Math.Min(CurHp + amount, MaxHp);
         return CurHp - beforeHp; //실제 회복된 HP 반환
     }
 
@@ -79,7 +79,7 @@ public abstract class Character
     {
         int beforeMp = CurMp;
         //회복 후 현재 MP가 최대 MP를 넘지 않도록 설정
-        CurMp = Math.Min(beforeMp, MaxMp);
+        CurMp = Math.Min(CurMp + amount, MaxMp);
         return CurMp - beforeMp; //실제 회복된 MP 반환
     }
     #endregion
