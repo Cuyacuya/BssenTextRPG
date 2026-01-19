@@ -13,3 +13,10 @@ public enum JobType
     Wizard
 }
 
+//아이템 타입
+public enum ItemType
+{
+    Weapon,
+    Armor,
+    Protion
+}
