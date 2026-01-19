@@ -50,6 +50,8 @@ public class GameManager
     //전투 시스템
     public BattleSystem BattleSystem { get; private set; }
 
+    //인벤토리 시스템
+    public InventorySystem inventory { get; private set; }
     #endregion
 
 
@@ -63,6 +65,9 @@ public class GameManager
 
         //캐릭터 생성
         CreateCharacter();
+
+        //인벤토리 초기화
+        inventory = new InventorySystem();
 
 
         //메인 게임 루프
@@ -170,7 +175,8 @@ public class GameManager
                 ConsoleUI.PressAnyKey();
                 break;
             case "2":
-                //TODO : 인벤토리 구현
+                //인벤토리 구현
+                inventory.ShowInventoryMenu();
                 break;
             case "3":
                 //TODO : 상점 구현
