@@ -79,7 +79,7 @@ public bool StartBattle(Player player, Enemy enemy)
             {
                 case "1": //공격
                     int damage = player.Attack(enemy);
-                    Console.WriteLine($"{player.Name}의 공격! {enemy.Name}에게 {damage}의 피해를 입혔습니다.");
+                     Console.WriteLine($"{player.Name}의 공격! {enemy.Name}에게 {damage}의 피해를 입혔습니다.");
                     Console.WriteLine($"{enemy.Name}의 남은 HP : {enemy.CurHp}/{enemy.MaxHp}");
                     return true;
                 case "2": //스킬
