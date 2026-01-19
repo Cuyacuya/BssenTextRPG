@@ -51,7 +51,7 @@ public class GameManager
     public BattleSystem BattleSystem { get; private set; }
 
     //인벤토리 시스템
-    public InventorySystem inventory { get; private set; }
+    public InventorySystem Inventory { get; private set; }
     #endregion
 
 
@@ -67,7 +67,10 @@ public class GameManager
         CreateCharacter();
 
         //인벤토리 초기화
-        inventory = new InventorySystem();
+        Inventory = new InventorySystem();
+
+        //초기 아이템 지급
+        SetupInitItems();
 
 
         //메인 게임 루프
@@ -83,9 +86,6 @@ public class GameManager
         {
             ConsoleUI.ShowGameOver();
         }
-
-        //TODO : 인벤토리 초기화
-        //TODO : 초기 아이템 지급
     }
     #endregion
 
@@ -147,7 +147,24 @@ public class GameManager
         //Player.DisplayInfo();
         ConsoleUI.PressAnyKey();
     }
+
+    //초기 아이템 지급
+    private void SetupInitItems()
+    {
+        //기본 장비
+        Inventory.AddItem(Equipment.CreateWeapon("목검"));
+        Inventory.AddItem(Equipment.CreateArmor("천갑옷"));
+
+        //포션 지급
+        Inventory.AddItem(Consumable.CreatePotion("체력포션"));
+        Inventory.AddItem(Consumable.CreatePotion("체력포션"));
+        Inventory.AddItem(Consumable.CreatePotion("마나포션"));
+
+        Console.WriteLine("\n초기 장비가 지급되었습니다.");
+        ConsoleUI.PressAnyKey();
+    }
     #endregion
+
 
     #region 메인 메뉴
     public void ShowMainMenu()
@@ -176,7 +193,7 @@ public class GameManager
                 break;
             case "2":
                 //인벤토리 구현
-                inventory.ShowInventoryMenu();
+                Inventory.ShowInventoryMenu();
                 break;
             case "3":
                 //TODO : 상점 구현

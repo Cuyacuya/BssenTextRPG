@@ -31,7 +31,7 @@ public class InventorySystem
 
     #region 아이템 관리
     //아이템 추가
-    public  void AddItem (Item item)
+    public void AddItem (Item item)
     {
         Items.Add(item);
         Console.WriteLine($"{item.Name}을 인벤토리에 추가하였습니다.");
@@ -64,6 +64,14 @@ public class InventorySystem
         {
             Console.WriteLine("인벤토리가 비어있습니다.");
             return;
+        }
+
+        Console.WriteLine( "\n[보유 아이템]");
+        for(int i=0; i< Items.Count; i++)
+        {
+            Item item = Items[i];
+            Console.Write($"[{i + 1}] ");
+            Items[i].DisplayInfo();
         }
     }
 

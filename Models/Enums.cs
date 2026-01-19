@@ -18,7 +18,7 @@ public enum ItemType
 {
     Weapon,
     Armor,
-    Protion
+    Potion
 }
 
 //장비 슬롯 타입
