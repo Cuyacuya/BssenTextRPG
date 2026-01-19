@@ -78,10 +78,34 @@ public class Player : Character
     #region 매서드
     public override void DisplayInfo()
     {
-        base.DisplayInfo();
-        Console.WriteLine($"직업 : {Job}");
+        //base.DisplayInfo();
+        Console.Clear();
+        Console.WriteLine($"====={Name} 정보=====");
+        Console.WriteLine($"Level : {Level}");
+        Console.WriteLine($"HP : {CurHp}/{MaxHp}");
+        Console.WriteLine($"HP : {CurMp}/{MaxMp}");
+
+        int attackBonus = EquippedWeapon != null ? EquippedWeapon.AttackBonus : 0;
+        int defenseBonus = EquippedArmor != null ? EquippedArmor.DefenseBonus : 0;
+
+        Console.WriteLine($"ATK : {AttackPower} + {attackBonus}");
+        Console.WriteLine($"ATK : {Defense} + {defenseBonus}");
         Console.WriteLine($"골드 : {Gold}");
         Console.WriteLine($"=====================");
+
+        //장착 아이템 목록
+        if(EquippedWeapon != null && EquippedArmor != null)
+        {
+            Console.WriteLine($"\n[장착중인 장비 목록]");
+            if(EquippedWeapon != null)
+            {
+                Console.WriteLine($"무기 : {EquippedWeapon.Name}");
+            }
+            if(EquippedArmor != null)
+            {
+                Console.WriteLine($"방어구 : {EquippedArmor.Name}");
+            }
+        }
     }
 
     //기본 공격 메서드 (override)

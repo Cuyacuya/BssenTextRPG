@@ -83,7 +83,7 @@ public class Equipment : Item
         {
             case "천갑옷":
                 return new Equipment(
-                    name: "가죽갑옷",
+                    name: "천갑옷",
                     description: "기본 방어구",
                     price: 100,
                     slot: EquipmentSlot.Armor,
