@@ -96,7 +96,7 @@ public class InventorySystem
                     break;
                 case "2":
                     //아이템 버리기 로직
-                    DropItem();
+                    DropItem(player);
                     break;
                 case "0":
                     return;
@@ -139,7 +139,7 @@ public class InventorySystem
     #endregion
 
     #region 아이템 버리기
-    private void DropItem()
+    private void DropItem(Player player)
     {
         if (Items.Count == 0) return;
 
@@ -151,13 +151,27 @@ public class InventorySystem
             Console.Write($"정말로 {item.Name}을 버리겠습니까? (Y/N)");
             if(Console.ReadLine()?.ToLower() == "y")
             {
+                //장착 무기 일 때  장착 해제 로직
+                if(item is Equipment equipment)
+                {
+                    if(equipment == player.EquippedWeapon)
+                    {
+                        player.UnequipItem(EquipmentSlot.Weapon);
+                    }
+                    else if(equipment == player.EquippedArmor)
+                    {
+                        player.UnequipItem(EquipmentSlot.Armor);
+                    }
+                }
                 RemoveItem(item);
-            }
-            else if(index != 0)
-            {
-                Console.WriteLine("잘못된 선택입니다.");
+                Console.WriteLine($"{item.Name}을 버렸습니다.");
                 ConsoleUI.PressAnyKey();
             }
+        }
+        else if(index != 0)
+        {
+            Console.WriteLine("잘못된 선택입니다.");
+            ConsoleUI.PressAnyKey();
         }
     }
     #endregion

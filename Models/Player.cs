@@ -111,9 +111,20 @@ public class Player : Character
     //기본 공격 메서드 (override)
     public override int Attack(Character target)
     {
-        //TODO : 장착한 아이템에 따른 공격력 증가 적용
+        //장착한 아이템에 따른 공격력 증가 적용
         int attackDamage = AttackPower;
-        
+
+        //null 병합 연산자 : ??
+        //int? a = null; : nullable int : 변수가 null일 수 있음
+        //int b = a ?? 10; : a가 null이면 10을 대입, 아니면 a의 값을 대입
+        attackDamage += EquippedWeapon?.AttackBonus ?? 0;
+
+        //if(EquippedWeapon != null)
+        //{
+        //    attackDamage += EquippedWeapon.AttackBonus;
+        //}
+
+
         return target.TakeDamage(attackDamage);
     }
 
@@ -124,6 +135,7 @@ public class Player : Character
 
         //스킬 공격 : 일반 공격의 1.5배 데미지
         int totalDamage = (int)(AttackPower * 1.5);
+        totalDamage +=   EquippedWeapon?.AttackBonus ?? 0; //null 병합 연산자
 
         //MP소모
         CurMp -= mpCost;
