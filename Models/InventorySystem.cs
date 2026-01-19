@@ -129,6 +129,7 @@ public class InventorySystem
                     RemoveItem(item);
                 }
             }
+            ConsoleUI.PressAnyKey();
         }
         else if(index != 0)
         {

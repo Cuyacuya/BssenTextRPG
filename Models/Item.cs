@@ -35,7 +35,7 @@ public abstract class Item
     //아이템 정보 표시
     public virtual void DisplayInfo()
     {
-        Console.WriteLine($"{Name} : {Description} (가격 : {Price} 골드)");
+        Console.WriteLine($"[{Name}] : {Description} (가격 : {Price} 골드)");
     }
     #endregion
 }

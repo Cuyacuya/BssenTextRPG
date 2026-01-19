@@ -89,7 +89,7 @@ public class Player : Character
         int defenseBonus = EquippedArmor != null ? EquippedArmor.DefenseBonus : 0;
 
         Console.WriteLine($"ATK : {AttackPower} + {attackBonus}");
-        Console.WriteLine($"ATK : {Defense} + {defenseBonus}");
+        Console.WriteLine($"DEF : {Defense} + {defenseBonus}");
         Console.WriteLine($"골드 : {Gold}");
         Console.WriteLine($"=====================");
 
@@ -149,6 +149,15 @@ public class Player : Character
     {
         Gold += amount;
         Console.WriteLine($"골드 +{amount} 획득! 현재 골드 : {Gold}");
+    }
+
+    //골드 차감 메서드
+    public void spendGold(int amount)
+    {
+        if (Gold >= amount)
+        {
+            Gold -= amount;
+        }
     }
 
     //장비 착용
