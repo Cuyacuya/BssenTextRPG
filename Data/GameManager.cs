@@ -63,31 +63,32 @@ public class GameManager
 
     #region 게임 시작/종료
     //게임 시작 메서드
-    public void StartGame()
+    public void StartGame(bool loadedGame = false)
     {
         //타이틀 표시
         ConsoleUI.ShowTitle();
         Console.WriteLine("빡센 게임에 오신 것을 환영합니다!\n");
 
-        //캐릭터 생성
-        CreateCharacter();
+        //새로 시작 하는 경우에만 캐릭터 생성 및 설정을  처리
+        if (!loadedGame)
+        {
+            //캐릭터 생성
+            CreateCharacter();
 
-        ////테스트 코드
-        //Player.TakeDamage(100);
+            //인벤토리 초기화
+            Inventory = new InventorySystem();
 
-        //인벤토리 초기화
-        Inventory = new InventorySystem();
-
-        //초기 아이템 지급
-        SetupInitItems();
+            //초기 아이템 지급
+            SetupInitItems();
+        }
 
 
         //메인 게임 루프
         IsRunning = true;
-        while(IsRunning)
+        while (IsRunning)
         {
             ShowMainMenu();
-            
+
         }
 
         //게임 종료 처리
@@ -231,7 +232,7 @@ public class GameManager
                 IsRunning = false;
                 Console.WriteLine("\n게임을 종료합니다.");
                 break;
-            default: 
+            default:
                 Console.WriteLine("잘못된 입력입니다. 다시 선택해주세요.");
                 ConsoleUI.PressAnyKey();
                 break;
@@ -266,7 +267,7 @@ public class GameManager
         Console.WriteLine($"\n휴식을 취합니다.");
         Console.WriteLine($"비용 : {restCost}골드");
 
-        if(Player.Gold < restCost)
+        if (Player.Gold < restCost)
         {
             Console.WriteLine("골드가 부족합니다.");
             ConsoleUI.PressAnyKey();
@@ -274,7 +275,7 @@ public class GameManager
         }
 
         Console.Write("\n휴식을 취하겠습니까? (y/n)");
-        if(Console.ReadLine()?.ToLower() == "y")
+        if (Console.ReadLine()?.ToLower() == "y")
         {
             Player.spendGold(restCost);
             Player.HealHp(Player.MaxHp);
@@ -284,23 +285,44 @@ public class GameManager
     }
     #endregion
 
-    #region 저장기능
+    #region 저장/로드기능
+
+    //게임 저장
     public void SaveGame()
     {
-        if(Player == null || Inventory == null)
+        if (Player == null || Inventory == null)
         {
             Console.WriteLine("\n저장할 게임 데이터가 업습니다.");
             ConsoleUI.PressAnyKey();
             return;
         }
 
-        if(SaveLoadSystem.SaveGame(Player, Inventory))
+        if (SaveLoadSystem.SaveGame(Player, Inventory))
         {
             Console.WriteLine("\n정상적으로 게임이 저장되었습니다.");
             ConsoleUI.PressAnyKey();
             return; ConsoleUI.PressAnyKey();
         }
-
     }
-    #endregion
+
+    //게임 로드
+    public bool LoadGame()
+    {
+        var saveData = SaveLoadSystem.LoadGame();
+        if (saveData == null) return false;
+
+        //1. Player 복원
+        Player = SaveLoadSystem.LoadPlayer(saveData.Player);
+
+        //2. Inventory 복원
+
+
+        //3. 장착 아이템 복원
+
+        Console.WriteLine("게임을 불러왔습니다.");
+        ConsoleUI.PressAnyKey();
+        return true;
+
+        #endregion
+    }
 }

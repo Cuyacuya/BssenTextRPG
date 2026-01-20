@@ -10,15 +10,15 @@ namespace BssenTextRPG.Models;
 public abstract class Character
 {
     #region 프로퍼티
-    public string Name { get; protected set; }
-    public int CurHp { get; protected set; }
-    public int MaxHp { get;  protected set; }
-    public int CurMp { get; protected set; }
-    public int MaxMp { get; protected set; }
+    public string Name { get; set; }
+    public int CurHp { get; set; }
+    public int MaxHp { get; set; }
+    public int CurMp { get; set; }
+    public int MaxMp { get; set; }
 
-    public int AttackPower { get; protected set; }
-    public int Defense { get; protected set; }
-    public int Level { get; protected set; }
+    public int AttackPower { get; set; }
+    public int Defense { get; set; }
+    public int Level { get; set; }
     public bool IsAlive => CurHp > 0;
     #endregion
 
