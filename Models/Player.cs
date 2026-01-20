@@ -83,7 +83,7 @@ public class Player : Character
         Console.WriteLine($"====={Name} 정보=====");
         Console.WriteLine($"Level : {Level}");
         Console.WriteLine($"HP : {CurHp}/{MaxHp}");
-        Console.WriteLine($"HP : {CurMp}/{MaxMp}");
+        Console.WriteLine($"MP : {CurMp}/{MaxMp}");
 
         int attackBonus = EquippedWeapon != null ? EquippedWeapon.AttackBonus : 0;
         int defenseBonus = EquippedArmor != null ? EquippedArmor.DefenseBonus : 0;
