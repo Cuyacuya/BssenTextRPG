@@ -11,7 +11,6 @@ public class Program
         // 콘솔 인코딩 설정 (한글 지원)
         Console.OutputEncoding = System.Text.Encoding.UTF8;
 
-        GameManager.Instance.StartGame();
         //저장된 게임 존재 여부 확인
         if (SaveLoadSystem.IsSaveFileExists())
         {
@@ -46,12 +45,13 @@ public class Program
             {
                 case "1":
                     GameManager.Instance.StartGame();
-                    break;
+                    return;  // 게임 종료 후 프로그램도 종료
                 case "2":
                     //이어서 하기
                     if(GameManager.Instance.LoadGame())
                     {
                         GameManager.Instance.StartGame(true);
+                        return;  // 게임 종료 후 프로그램도 종료
                     }
                     break;
                 case "0":
